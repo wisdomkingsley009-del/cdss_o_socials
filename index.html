@@ -1,0 +1,621 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Social Day Awards 2026</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+
+:root {
+    --cream: #F7F3EC;
+    --paper: #FFFCF7;
+    --burgundy: #652D3A;
+    --burgundy-dark: #49202A;
+    --gold: #B69A6A;
+    --text: #302721;
+    --muted: #81756B;
+    --border: #E8DED1;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--cream);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+}
+
+button {
+    font: inherit;
+}
+
+.page-wrapper {
+    max-width: 1120px;
+    margin: auto;
+    padding: 25px 24px 70px;
+}
+
+/* HEADER */
+
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0 25px;
+    border-bottom: 1px solid var(--border);
+}
+
+.brand {
+    color: var(--burgundy);
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.header-label {
+    color: var(--burgundy);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+/* HERO */
+
+.hero {
+    position: relative;
+    overflow: hidden;
+    padding: 80px 0 65px;
+}
+
+.hero::after {
+    content: "2026";
+    position: absolute;
+    right: -5px;
+    bottom: 0;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(100px, 22vw, 250px);
+    font-weight: 700;
+    color: rgba(182,154,106,.09);
+    pointer-events: none;
+}
+
+.eyebrow {
+    color: var(--gold);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    margin-bottom: 22px;
+}
+
+.hero h1 {
+    position: relative;
+    z-index: 1;
+    max-width: 650px;
+    color: var(--burgundy);
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(48px, 8vw, 82px);
+    line-height: 1.08;
+    font-weight: 500;
+}
+
+.hero-description {
+    max-width: 450px;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.8;
+    margin-top: 22px;
+}
+
+/* BALLOT PROGRESS */
+
+.progress-section {
+    padding: 20px 0 45px;
+}
+
+.progress-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 12px;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.progress-track {
+    height: 5px;
+    background: #E7DED2;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    background: var(--burgundy);
+    transition: width .3s ease;
+}
+
+/* CATEGORY */
+
+.category {
+    padding: 36px 0 45px;
+    border-top: 1px solid var(--border);
+    scroll-margin-top: 25px;
+    transition: background .3s ease;
+}
+
+.category.highlighted {
+    background: rgba(182,154,106,.09);
+    border-radius: 8px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.category-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.category-number {
+    color: var(--gold);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 9px;
+}
+
+.category h2 {
+    color: var(--burgundy);
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(25px, 4vw, 34px);
+    font-weight: 600;
+}
+
+.category-status {
+    color: var(--muted);
+    font-size: 11px;
+    white-space: nowrap;
+}
+
+/* NOMINEE CARDS */
+
+.nominee-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.nominee-card {
+    background: var(--paper);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    padding: 22px;
+    min-height: 170px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: border-color .2s, transform .2s, box-shadow .2s;
+}
+
+.nominee-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--gold);
+    box-shadow: 0 8px 22px rgba(73,32,42,.06);
+}
+
+.nominee-card.selected {
+    border: 1.5px solid var(--burgundy);
+    background: #FBF5F2;
+}
+
+.nominee-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.nominee-name {
+    color: var(--text);
+    font-family: 'Playfair Display', serif;
+    font-size: 21px;
+    font-weight: 600;
+}
+
+.nominee-caption {
+    color: var(--muted);
+    font-size: 11px;
+    margin-top: 7px;
+}
+
+.select-circle {
+    width: 21px;
+    height: 21px;
+    flex-shrink: 0;
+    border: 1px solid #C9BBA9;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 12px;
+}
+
+.selected .select-circle {
+    background: var(--burgundy);
+    border-color: var(--burgundy);
+}
+
+.nominee-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 25px;
+}
+
+.vote-label {
+    color: var(--burgundy);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .5px;
+}
+
+.share-button {
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--muted);
+    padding: 9px 13px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 11px;
+    transition: .2s;
+}
+
+.share-button:hover {
+    border-color: var(--gold);
+    color: var(--burgundy);
+}
+
+/* FOOTER */
+
+.site-footer {
+    border-top: 1px solid var(--border);
+    padding-top: 30px;
+    margin-top: 30px;
+    text-align: center;
+}
+
+.footer-brand {
+    font-family: 'Playfair Display', serif;
+    color: var(--burgundy);
+    font-size: 22px;
+}
+
+.footer-text {
+    color: var(--muted);
+    font-size: 11px;
+    margin-top: 10px;
+}
+
+/* TOAST */
+
+.toast {
+    position: fixed;
+    left: 50%;
+    bottom: 25px;
+    transform: translate(-50%, 20px);
+    background: var(--burgundy-dark);
+    color: white;
+    padding: 13px 20px;
+    border-radius: 4px;
+    font-size: 12px;
+    opacity: 0;
+    pointer-events: none;
+    transition: .25s;
+    z-index: 10;
+    text-align: center;
+    width: max-content;
+    max-width: calc(100% - 30px);
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+    .page-wrapper {
+        padding: 18px 17px 50px;
+    }
+
+    .hero {
+        padding: 65px 0 50px;
+    }
+
+    .nominee-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .nominee-card {
+        min-height: 135px;
+    }
+
+    .category {
+        padding: 30px 0 35px;
+    }
+
+    .category-heading {
+        flex-direction: column;
+    }
+
+    .category-status {
+        margin-top: -5px;
+    }
+
+    .header-label {
+        font-size: 8px;
+        letter-spacing: 1px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="page-wrapper">
+
+    <header class="site-header">
+        <div class="brand">SD.</div>
+        <div class="header-label">CELEBRATING EXCELLENCE</div>
+    </header>
+
+    <section class="hero">
+        <div class="eyebrow">THE PEOPLE'S CHOICE · 2026</div>
+        <h1>CDSS OSHODI.<br>SOCIALS.</h1>
+        <p class="hero-description">
+            Identify your desired nominee and vote.
+        </p>
+    </section>
+
+    <section class="progress-section">
+        <div class="progress-top">
+            <span>YOUR BALLOT</span>
+            <span id="progress-count">0 of 3 categories selected</span>
+        </div>
+        <div class="progress-track">
+            <div class="progress-fill" id="progress-fill"></div>
+        </div>
+    </section>
+
+    <main id="categories-container"></main>
+
+    <footer class="site-footer">
+        <div class="footer-brand">The Social Day Awards</div>
+        <p class="footer-text">
+            Celebrating excellence, personality and unforgettable moments.
+        </p>
+        <p class="footer-text">© 2026 Social Day Awards</p>
+    </footer>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const categories = [
+    {
+        id: "best-dressed-male",
+        title: "Best Dressed Male",
+        nominees: [
+            "Okafor Gift",
+            "Okafor Gift",
+            "Okafor Gift"
+        ]
+    },
+    {
+        id: "best-dressed-female",
+        title: "Best Dressed Female",
+        nominees: [
+            "Okafor Gift",
+            "Okafor Gift",
+            "Okafor Gift"
+        ]
+    },
+    {
+        id: "most-popular-student",
+        title: "Most Popular Student",
+        nominees: [
+            "Okafor Gift",
+            "Okafor Gift",
+            "Okafor Gift"
+        ]
+    }
+];
+
+const selections = {};
+
+function renderCategories() {
+    const container = document.getElementById("categories-container");
+
+    container.innerHTML = categories.map((category, categoryIndex) => `
+        <section class="category" id="category-${category.id}">
+
+            <div class="category-heading">
+                <div>
+                    <div class="category-number">
+                        CATEGORY 0${categoryIndex + 1}
+                    </div>
+                    <h2>${category.title}</h2>
+                </div>
+
+                <div class="category-status" id="status-${category.id}">
+                    No vote selected
+                </div>
+            </div>
+
+            <div class="nominee-grid">
+                ${category.nominees.map((nominee, nomineeIndex) => `
+                    <article
+                        class="nominee-card"
+                        id="nominee-${category.id}-${nomineeIndex}"
+                        onclick="selectNominee('${category.id}', ${nomineeIndex})"
+                        role="button"
+                        tabindex="0"
+                        onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();selectNominee('${category.id}',${nomineeIndex})}"
+                    >
+                        <div class="nominee-top">
+                            <div>
+                                <div class="nominee-name">${nominee}</div>
+                                <div class="nominee-caption">Nominee</div>
+                            </div>
+
+                            <div class="select-circle" id="circle-${category.id}-${nomineeIndex}"></div>
+                        </div>
+
+                        <div class="nominee-bottom">
+                            <span class="vote-label">SELECT NOMINEE</span>
+                        </div>
+                    </article>
+                `).join("")}
+            </div>
+
+            <div style="margin-top:20px">
+                <button class="share-button"
+                    onclick="shareCategory('${category.id}')">
+                    Share category
+                </button>
+            </div>
+
+        </section>
+    `).join("");
+
+    handleCategoryLink();
+}
+
+function selectNominee(categoryId, nomineeIndex) {
+    selections[categoryId] = nomineeIndex;
+
+    const category = categories.find(item => item.id === categoryId);
+
+    category.nominees.forEach((nominee, index) => {
+        const card = document.getElementById(
+            `nominee-${categoryId}-${index}`
+        );
+
+        const circle = document.getElementById(
+            `circle-${categoryId}-${index}`
+        );
+
+        const selected = index === nomineeIndex;
+
+        card.classList.toggle("selected", selected);
+        circle.textContent = selected ? "✓" : "";
+    });
+
+    document.getElementById(`status-${categoryId}`).textContent =
+        "Vote selected";
+
+    updateProgress();
+
+    showToast(
+        category.nominees[nomineeIndex] +
+        " selected for " + category.title
+    );
+}
+
+function updateProgress() {
+    const count = Object.keys(selections).length;
+    const total = categories.length;
+
+    document.getElementById("progress-count").textContent =
+        `${count} of ${total} categories selected`;
+
+    document.getElementById("progress-fill").style.width =
+        `${(count / total) * 100}%`;
+}
+
+async function shareCategory(categoryId) {
+    const category = categories.find(item => item.id === categoryId);
+
+    const url = new URL(window.location.href);
+    url.searchParams.set("category", categoryId);
+
+    const shareData = {
+        title: "The Social Day Awards 2026",
+        text: `Vote in the ${category.title} category.`,
+        url: url.toString()
+    };
+
+    try {
+        if (navigator.share) {
+            await navigator.share(shareData);
+        } else {
+            await navigator.clipboard.writeText(shareData.url);
+            showToast("Category link copied.");
+        }
+    } catch (error) {
+        if (error.name !== "AbortError") {
+            showToast("Unable to share this category.");
+        }
+    }
+}
+
+function handleCategoryLink() {
+    const params = new URLSearchParams(window.location.search);
+    const categoryId = params.get("category");
+
+    if (!categoryId) return;
+
+    const target = document.getElementById(
+        `category-${categoryId}`
+    );
+
+    if (target) {
+        setTimeout(() => {
+            target.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+
+            target.classList.add("highlighted");
+        }, 300);
+    }
+}
+
+let toastTimer;
+
+function showToast(message) {
+    const toast = document.getElementById("toast");
+
+    toast.textContent = message;
+    toast.classList.add("show");
+
+    clearTimeout(toastTimer);
+
+    toastTimer = setTimeout(() => {
+        toast.classList.remove("show");
+    }, 2500);
+}
+
+renderCategories();
+</script>
+
+</body>
+</html>
